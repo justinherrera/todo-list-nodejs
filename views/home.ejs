@@ -1,0 +1,21 @@
+<br>
+<form action="/todos" method="POST" class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      <input type="text" class="form-control" id="item" placeholder="Item">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <div class="form-group mx-sm-3 mb-2">
+            <select id="inputState" class="form-control">
+            <option selected>Active</option>
+            <option>Inactive</option>
+            </select>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-primary mb-2">Add</button>
+</form>
+
+<ul>
+    <% items.forEach(function(item){ %>
+    <li> <%= item.item %> </li>
+    <% }); %>
+</ul>
