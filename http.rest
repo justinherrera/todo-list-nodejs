@@ -2,6 +2,21 @@ POST http://localhost:3000/todos
 Content-Type: application/json
 
 {
-    "item": "Drink new water",
+    "item": "Sleep",
+    "status": "Active"
+}
+
+###
+DELETE http://localhost:3000/todos/5efc3e1e622ab40e1449517e
+
+###
+GET http://localhost:3000/todos
+
+###
+PATCH http://localhost:3000/todos/5efc4221a351b918b4b9699e
+Content-Type: application/json
+
+{
+    "item": "Eat Snacks Leftover",
     "status": "Active"
 }

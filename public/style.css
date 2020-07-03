@@ -1,0 +1,8 @@
+.container {padding:20px;}
+.popover {width:auto;max-width:1500px;}
+
+.popover-content button.btn-primary {
+  color: #00A1FF;
+  border-color:#00A1FF;
+  background:white;
+}

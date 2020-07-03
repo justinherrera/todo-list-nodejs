@@ -7,9 +7,17 @@ const Todo = require('../models/Todo')
 // GET ALL TODOS
 router.get('/', async (req,res) =>  {
     try{
-        await Todo.find().toArray( items => {
-            res.render('home', { items })
-        })
+        const todo = await Todo.find();
+        res.render('home', {items: todo})
+        // await Todo.find().toArray( items => {
+        //     res.render('home', { items: items }, function(err,html){
+        //         console.log(html)
+        //         res.send(html)
+        //     })
+        // })
+        // res.render('home', { name: 'Tobi' }, function(err, html){
+        //     res.send(html)
+        // })
     }catch(err){}
 })
 
@@ -17,11 +25,12 @@ router.get('/', async (req,res) =>  {
 router.post('/', async (req,res) => {
     const todo = new Todo({
         item: req.body.item,
-        dueDate: req.body.dueDate,
+        dueDate:  req.body.dueDate,
         status: req.body.status
     })
     try{
         const save_todo = await todo.save()
+        res.redirect('/todos');
         res.json(save_todo)
     }catch(err){
         res.json({ message: err })

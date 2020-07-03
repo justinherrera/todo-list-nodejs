@@ -1,21 +1,48 @@
 <br>
 <form action="/todos" method="POST" class="form-inline">
+  <div class="form-group mx-sm-3 mb-2">
+    <input type="text" name="item" class="form-control" id="item" placeholder="Item">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
     <div class="form-group mx-sm-3 mb-2">
-      <input type="text" class="form-control" id="item" placeholder="Item">
+      <select name="status" id="inputState" class="form-control">
+        <option selected>Active</option>
+        <option>Inactive</option>
+      </select>
     </div>
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
     <div class="form-group mx-sm-3 mb-2">
-        <div class="form-group mx-sm-3 mb-2">
-            <select id="inputState" class="form-control">
-            <option selected>Active</option>
-            <option>Inactive</option>
-            </select>
-        </div>
-      </div>
-    <button type="submit" class="btn btn-primary mb-2">Add</button>
+      <input class="form-control" name="dueDate" type="datetime-local" value="2011-08-19T13:45:00"
+        id="example-datetime-local-input">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Add</button>
 </form>
-
-<ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Action</th>
+      <th scope="col">Item</th>
+      <th scope="col">Status</th>
+      <th scope="col">DueDate</th>
+    </tr>
+  </thead>
+  <tbody>
     <% items.forEach(function(item){ %>
-    <li> <%= item.item %> </li>
+    <tr>
+      <td><button class="btn btn-sm btn-danger delete_item" data-id=<%= item._id %>>Delete</button></td>
+      <!-- <i data-placement="bottom" data-toggle="popover" class="fas fa-cog"></i> -->
+      <!-- <td class="parent" data-id=<%= item._id %>>
+        <div id="popover-content" style="display:none">
+          <button class="btn btn-sm btn-primary" data-id=<%= item._id %>><%= item.item %></button>
+          <button class="btn btn-sm btn-danger delete_item" data-id=<%= item._id %>>Delete</button>
+        </div>
+      </td> -->
+      <td><%= item.item %></td>
+      <td><%= item.status %></td>
+      <td class="date"><%= item.dueDate %></td>
+    </tr>
     <% }); %>
-</ul>
+</table>
+<!-- Action -->

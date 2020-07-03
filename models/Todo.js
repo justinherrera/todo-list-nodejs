@@ -3,15 +3,15 @@ const mongoose = require('mongoose')
 const TodoSchema = mongoose.Schema({
     item: {
         type: String,
-        require: true
+        required: true
     },
     dueDate: {
         type: Date,
-        default: new Date("03/25/2015"),
         required: true
     },
     status: {
         type: String,
+        default: 'Active',
         required: true
     },
     created_at: {
